@@ -32,9 +32,9 @@ class View {
   addCreateHandler(handler) {
     this.html.querySelector('.view-stub__apply').addEventListener('click', () => {
       const input = this.html.querySelector('.view-stub__input');
-      const newTaskTitle = input.value;
+      const animalName = input.value;
       input.value = '';
-      handler(newTaskTitle);
+      handler(animalName);
     });
   }
 
