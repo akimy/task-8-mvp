@@ -1,5 +1,18 @@
+import consoleLogger from '../ConsoleLogger';
+
+
+/**
+ * @class View - отвечает за рендеринг данных на странице
+*/
 class View {
-  constructor(logger) {
+  /**
+   * Создает HTML -  ноду
+   * @param {Model} model
+   * @param {CustomEvents} customEvents
+   * @param {Logger} logger
+   *
+  */
+  constructor(logger = consoleLogger) {
     this.logger = logger;
     this.html = document.createElement('div');
     this.html.innerHTML = `
@@ -12,6 +25,10 @@ class View {
         </div>`;
   }
 
+  /**
+   * Колбек который навешивает листенер на отправку данных
+   * @param {Function} handler
+  */
   addCreateHandler(handler) {
     this.html.querySelector('.view-stub__apply').addEventListener('click', () => {
       const input = this.html.querySelector('.view-stub__input');
@@ -21,6 +38,10 @@ class View {
     });
   }
 
+  /**
+   * Колбек который навешивает листенеры на кнопки удаления данных
+   * @param {Function} handler
+  */
   addDeleteHandler(handler) {
     this.html.querySelectorAll('.item__button_remove')
       .forEach(element => element.addEventListener('click', () => {
@@ -29,6 +50,10 @@ class View {
       }));
   }
 
+  /**
+   * Перерисовывает DOM страницы
+   * @param {Object} animals
+  */
   render(animals) {
     this.logger.write('View.js: Call render function');
     const nodes = [];

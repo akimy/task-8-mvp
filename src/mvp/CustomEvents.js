@@ -1,3 +1,5 @@
+import consoleLogger from '../ConsoleLogger';
+
 class Event {
   constructor(name) {
     this.name = name;
@@ -10,7 +12,7 @@ class Event {
 }
 
 class CustomEvents {
-  constructor(logger) {
+  constructor(logger = consoleLogger) {
     this.logger = logger;
     this.events = {};
   }

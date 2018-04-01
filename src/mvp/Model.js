@@ -1,6 +1,17 @@
+import consoleLogger from '../ConsoleLogger';
+
+/**
+ * @class Model - содержит информацию о модели (данные)
+*/
 class Model {
-  constructor(customEvents, logger) {
-    this.data = { 0: 'Fox', 1: 'Lion', 2: 'Squerrel' };
+  /**
+   * Устанавливает первоначальные данные и регестрирует логгер
+   * @param {Logger} logger
+   * @param {Object} data - изначальные данные
+   * @param {CustomEvents} - эвент-эммитер
+   */
+  constructor(data, customEvents, logger = consoleLogger) {
+    this.data = data;
     this.customEvents = customEvents;
     this.currentId = 3;
     this.logger = logger;
